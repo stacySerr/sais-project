@@ -1,0 +1,16 @@
+{
+  "name": "Secure Asset Intelligence Services",
+  "shortName": "SAS",
+  "url": "/",
+  "email": "stacy.serrantino@gmail.com",
+  "tagline": "Find what others miss.",
+  "description": "Jurisdiction-specific public-records and tax-sale surplus-funds research for counsel, title professionals, and investigative teams.",
+  "nav": [
+    { "label": "Public records", "href": "/public-records/" },
+    { "label": "Surplus funds", "href": "/surplus-funds/" },
+    { "label": "Method", "href": "/method/" },
+    { "label": "Standards", "href": "/standards/" },
+    { "label": "Deliverable", "href": "/deliverable/" },
+    { "label": "About", "href": "/about/" }
+  ]
+}
