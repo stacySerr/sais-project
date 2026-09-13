@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{{ title }}</title>
+  <meta name="description" content="{{ description }}" />
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="/">
+        <span class="mark">SA</span>
+        <span class="brand-name">Secure Asset<br>Intelligence Services</span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+      <nav id="site-nav">
+        {{ nav }}
+      </nav>
+      <a class="btn header-cta" href="/contact/">Request a research scope</a>
+    </div>
+  </header>
+  <main>
+    {{ content }}
+  </main>
+  <footer>
+    <div class="wrap foot-grid">
+      <div>Secure Asset Intelligence Services · Research intelligence, not legal representation.</div>
+      <div><a href="/contact/">Scope a project</a> · <a href="/standards/">Standards</a> · <a href="/about/">About</a></div>
+    </div>
+  </footer>
+  <script>
+    const toggle = document.querySelector(".nav-toggle");
+    const nav = document.getElementById("site-nav");
+    if (toggle && nav) {
+      toggle.addEventListener("click", () => {
+        const open = toggle.getAttribute("aria-expanded") === "true";
+        toggle.setAttribute("aria-expanded", String(!open));
+        nav.classList.toggle("is-open", !open);
+      });
+    }
+  </script>
+</body>
+</html>
