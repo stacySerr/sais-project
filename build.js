@@ -54,12 +54,19 @@ function render(template, vars) {
   );
 }
 
+function withBase(base, href) {
+  const b = (base || "").replace(/\/$/, "");
+  if (!href || href === "/") return `${b}/` || "/";
+  return `${b}${href}`;
+}
+
 function navHtml(site, current) {
   return site.nav
     .map((item) => {
+      const href = withBase(site.base, item.href);
       const currentAttr =
         item.href === current ? ' aria-current="page"' : "";
-      return `<a href="${item.href}"${currentAttr}>${item.label}</a>`;
+      return `<a href="${href}"${currentAttr}>${item.label}</a>`;
     })
     .join("\n        ");
 }
@@ -88,7 +95,11 @@ function main() {
       title: pageTitle,
       description: data.description || site.description,
       nav: navHtml(site, permalink),
-      content,
+      base: (site.base || "").replace(/\/$/, ""),
+      content: content.replace(
+        /href="\//g,
+        `href="${(site.base || "").replace(/\/$/, "")}/`
+      ),
     });
     const dest = outPath(permalink);
     write(dest, html);
