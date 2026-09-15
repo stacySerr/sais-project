@@ -12,18 +12,21 @@ permalink: /contact/
 </section>
 <section class="section">
   <div class="wrap">
+    <p class="phone-actions">
+      <a class="btn" href="mailto:stacy.serrantino@gmail.com?subject=Research%20scope%20request">Open Mail</a>
+    </p>
     <form action="mailto:stacy.serrantino@gmail.com?subject=Research%20scope%20request" method="post" enctype="text/plain">
       <label>Name
-        <input name="Name" required />
+        <input name="Name" autocomplete="name" autocapitalize="words" required />
       </label>
       <label>Email
-        <input type="email" name="Email" required />
+        <input type="email" name="Email" autocomplete="email" inputmode="email" autocapitalize="off" required />
       </label>
       <label>Jurisdiction (county + state)
-        <input name="Jurisdiction" required />
+        <input name="Jurisdiction" autocapitalize="words" enterkeyhint="next" required />
       </label>
       <label>Research question (one sentence)
-        <textarea name="Question" rows="3" required></textarea>
+        <textarea name="Question" rows="3" enterkeyhint="next" required></textarea>
       </label>
       <label>What you already have
         <input name="Already_have" placeholder="Sale list, deed, docket, or nothing" />

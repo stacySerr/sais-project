@@ -1,0 +1,18 @@
+{
+  "name": "Secure Asset Intelligence Services",
+  "short_name": "SAS",
+  "description": "Public-records and surplus-funds research.",
+  "start_url": "/sais-project/",
+  "scope": "/sais-project/",
+  "display": "standalone",
+  "background_color": "#f6f4ee",
+  "theme_color": "#1e3d34",
+  "icons": [
+    {
+      "src": "/sais-project/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
