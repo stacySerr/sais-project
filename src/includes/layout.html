@@ -2,23 +2,34 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>{{ title }}</title>
   <meta name="description" content="{{ description }}" />
-  <link rel="stylesheet" href="/styles.css" />
+  <meta name="theme-color" content="#1e3d34" />
+  <meta name="color-scheme" content="light" />
+  <meta name="format-detection" content="telephone=no,address=no,email=yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="apple-mobile-web-app-title" content="SAS" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <link rel="manifest" href="{{ base }}/manifest.webmanifest" />
+  <link rel="icon" href="{{ base }}/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="{{ base }}/icon.svg" />
+  <link rel="stylesheet" href="{{ base }}/styles.css" />
 </head>
 <body>
   <header class="site-header">
     <div class="wrap header-inner">
-      <a class="brand" href="/">
+      <a class="brand" href="{{ base }}/">
         <span class="mark">SA</span>
         <span class="brand-name">Secure Asset<br>Intelligence Services</span>
       </a>
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
       <nav id="site-nav">
         {{ nav }}
+        <a class="nav-scope" href="{{ base }}/contact/">Request a research scope</a>
       </nav>
-      <a class="btn header-cta" href="/contact/">Request a research scope</a>
+      <a class="btn header-cta" href="{{ base }}/contact/">Request a research scope</a>
     </div>
   </header>
   <main>
@@ -27,18 +38,26 @@
   <footer>
     <div class="wrap foot-grid">
       <div>Secure Asset Intelligence Services · Research intelligence, not legal representation.</div>
-      <div><a href="/contact/">Scope a project</a> · <a href="/standards/">Standards</a> · <a href="/about/">About</a></div>
+      <div><a href="{{ base }}/contact/">Scope a project</a> · <a href="{{ base }}/standards/">Standards</a> · <a href="{{ base }}/about/">About</a></div>
     </div>
   </footer>
+  <div class="phone-dock" role="navigation" aria-label="Phone actions">
+    <a class="dock-link" href="mailto:{{ email }}?subject=Research%20scope%20request">Email</a>
+    <a class="dock-link dock-primary" href="{{ base }}/contact/">Request scope</a>
+  </div>
   <script>
     const toggle = document.querySelector(".nav-toggle");
     const nav = document.getElementById("site-nav");
+    function setOpen(open) {
+      toggle.setAttribute("aria-expanded", String(open));
+      nav.classList.toggle("is-open", open);
+      document.body.classList.toggle("nav-open", open);
+    }
     if (toggle && nav) {
       toggle.addEventListener("click", () => {
-        const open = toggle.getAttribute("aria-expanded") === "true";
-        toggle.setAttribute("aria-expanded", String(!open));
-        nav.classList.toggle("is-open", !open);
+        setOpen(toggle.getAttribute("aria-expanded") !== "true");
       });
+      nav.querySelectorAll("a").forEach((a) => a.addEventListener("click", () => setOpen(false)));
     }
   </script>
 </body>
