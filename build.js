@@ -96,6 +96,7 @@ function main() {
       description: data.description || site.description,
       nav: navHtml(site, permalink),
       base: (site.base || "").replace(/\/$/, ""),
+      email: site.email || "",
       content: content.replace(
         /href="\//g,
         `href="${(site.base || "").replace(/\/$/, "")}/`
@@ -106,9 +107,13 @@ function main() {
     console.log("wrote", path.relative(DIST, dest));
   }
 
-  const cssSrc = path.join(SRC, "styles.css");
-  write(path.join(DIST, "styles.css"), read(cssSrc));
-  console.log("wrote styles.css");
+  for (const asset of ["styles.css", "manifest.webmanifest", "favicon.svg", "icon.svg"]) {
+    const src = path.join(SRC, asset);
+    if (fs.existsSync(src)) {
+      write(path.join(DIST, asset), read(src));
+      console.log("wrote", asset);
+    }
+  }
   console.log(`built ${pages.length} pages → dist/`);
 }
 
